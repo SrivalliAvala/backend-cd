@@ -16,7 +16,7 @@ pipeline {
     environment {
         appVersion = '' // this will become global, we can use across pipeline
         region = 'us-east-1'
-        account_id = ''
+        account_id = '127214173178'
         project = 'expense'
         environment = ''
         component = 'backend'
@@ -61,7 +61,7 @@ pipeline {
         }
         stage('Deploy'){
             steps{
-                withAWS(region: 'us-east-1', credentials: 'aws-creds') {
+                withAWS(region: 'us-east-1', credentials: 'aws-cred') {
                     sh """
                         aws eks update-kubeconfig --region ${region} --name ${project}-dev
                         cd helm
